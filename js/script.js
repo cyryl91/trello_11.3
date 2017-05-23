@@ -12,23 +12,14 @@ function Column(name){
 
 	this.name = name;
 	this.id = randomString();
-	this.$element = createColumn(); 
-//metoda, prototyp dodwanie carty, usuwanie kolumny+
-Column.prototype = {
-    addCard: function(card) {
-      this.$element.children('ul').append(card.$element);
-    },
-    removeColumn: function() {
-      this.$element.remove();
-    }
-};
+	this.$element = createColumn();
 
 function createColumn(){
 //tworzenie segmerntu pierwszego, wygląd kolumnyu
 var $column = $('<div>').addClass('column');
 var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
 var $columnCardList = $('<ul>').addClass('column-card-list');
-var $columnDelete = $('<button>').addClass('btn-delete').text('x');
+var $columnDelete = $('<button>').addClass('btn-delete').text('delete column');
 var $columnAddCard = $('<button>').addClass('add-card').text('add new card');
 //nasluchiwacze na button w columnie	
 	$columnDelete.click(function(){
@@ -46,7 +37,15 @@ var $columnAddCard = $('<button>').addClass('add-card').text('add new card');
 		return $column;
 	}
 }
-
+//metoda, prototyp dodwanie carty, usuwanie kolumny
+Column.prototype = {
+    addCard: function(card) {
+      this.$element.children('ul').append(card.$element);
+    },
+    removeColumn: function() {
+      this.$element.remove();
+    }
+};
 
 
 
